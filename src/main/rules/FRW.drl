@@ -1,0 +1,27 @@
+package org.raul.frw;
+ 
+import org.raul.model.Message;
+import org.raul.model.PTR;
+
+ 
+rule "DWM Ptrs"
+	when
+		PTR (title matches ".*DWM.*");
+	then
+		insert( Message.info()
+		               .title("Yet another DWM PTR")
+		               .details("Handle quickly!")
+		               .addTag("DWM")
+		               .addTag("Urgent!")); 
+end
+
+
+rule "PTRs without attachments are suspect"
+	when
+		PTR (hasAttachement == false);
+	then
+		insert( Message.warning()
+		               .title("Strange...")
+		               .details("No attachment at all")
+		               .addTag("Zero attachment folks")); 
+end
