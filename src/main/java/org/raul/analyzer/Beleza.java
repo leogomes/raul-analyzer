@@ -1,5 +1,9 @@
 package org.raul.analyzer;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +22,7 @@ public class Beleza {
 	
 	private String team;
 
-	private Beleza(String team) {
+	Beleza(String team) {
 		this.team = team;
 	}
 	
@@ -31,8 +35,11 @@ public class Beleza {
 	 * - Execute those team's rules against the PTRs
 	 * - Extract and analyze results
 	 * 
+	 * TODO: For the time being it doesn't make sense to expose this method, because there's 
+	 * no link between Message and PTR, so if I get all messages it will be difficult to correlate them.
+	 * I don't want to add support for that right now, because I want to focus on having simple .drls firt.
 	 */
-	public Collection<Message> analyzeAll() {
+	Collection<Message> analyzeAll() {
 		
 		Engine<Message> drools = new Engine<Message>(getRuleFileName(), Message.class ); 
 		return drools.runWith(ptrs());
@@ -49,7 +56,19 @@ public class Beleza {
 		return this.team + ".drl";
 	}
 	
-	private static List<PTR> ptrs() {
-		return null;
+	public List<PTR> ptrs() {
+		
+		PTR ptr1 = mock(PTR.class);
+		when(ptr1.getTitle()).thenReturn("PTR 12345");
+		
+		PTR dwmPtr = mock(PTR.class);
+		when(dwmPtr.getTitle()).thenReturn("PTR 2345 - Blabla DWM bla");
+		when(dwmPtr.hasAttachement()).thenReturn(true);
+		
+		List ptrs = new ArrayList();
+		ptrs.add(ptr1);
+		ptrs.add(dwmPtr);
+		
+		return ptrs;
 	}
 }

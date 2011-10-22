@@ -12,7 +12,13 @@ rule "DWM Ptrs"
 		               .title("Yet another DWM PTR")
 		               .details("Handle quickly!")
 		               .addTag("DWM")
+		               .addTag("Urgent!"));
+		               
+		insert( Message.warning()
+		               .title("DWM PTR buahahaha!")
+		               .addTag("DWM")
 		               .addTag("Urgent!")); 
+		                
 end
 
 

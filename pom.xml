@@ -14,6 +14,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/rules</directory>
+			</resource>
+		</resources>
+	</build>
 	<repositories>
 		<repository>
 			<id>repository.jboss.org</id>
@@ -24,7 +31,7 @@
 		</repository>
 	</repositories>
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -37,7 +44,7 @@
 			<artifactId>mockito-all</artifactId>
 			<version>1.8.5</version>
 			<type>jar</type>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
