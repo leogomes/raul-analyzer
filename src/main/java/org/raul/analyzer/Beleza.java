@@ -59,7 +59,17 @@ public class Beleza {
 	public List<PTR> ptrs() {
 		
 		PTR ptr1 = mock(PTR.class);
-		when(ptr1.getTitle()).thenReturn("PTR 12345");
+		when(ptr1.getTitle()).thenReturn("PTR 1234567");
+		
+		PTR ptr2 = mock(PTR.class);
+		when(ptr2.getTitle()).thenReturn("PTR 0567384");
+
+		PTR ptr3 = mock(PTR.class);
+		when(ptr3.getTitle()).thenReturn("PTR 0123456");
+
+		PTR ptr4 = mock(PTR.class);
+		when(ptr4.getTitle()).thenReturn("PTR 0767532");
+
 		
 		PTR dwmPtr = mock(PTR.class);
 		when(dwmPtr.getTitle()).thenReturn("PTR 2345 - Blabla DWM bla");
@@ -67,6 +77,9 @@ public class Beleza {
 		
 		List ptrs = new ArrayList();
 		ptrs.add(ptr1);
+		ptrs.add(ptr2);
+		ptrs.add(ptr3);
+		ptrs.add(ptr4);
 		ptrs.add(dwmPtr);
 		
 		return ptrs;

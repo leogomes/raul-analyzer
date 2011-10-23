@@ -9,16 +9,10 @@ rule "DWM Ptrs"
 		PTR (title matches ".*DWM.*");
 	then
 		insert( Message.info()
-		               .title("Yet another DWM PTR")
+		               .title("DWM PTR for Connectors")
 		               .details("Handle quickly!")
 		               .addTag("DWM")
 		               .addTag("Urgent!"));
-		               
-		insert( Message.warning()
-		               .title("DWM PTR buahahaha!")
-		               .details("You better look at it")
-		               .addTag("DWM")
-		               .addTag("Urgent!")); 
 		                
 end
 
@@ -28,7 +22,13 @@ rule "PTRs without attachments are suspect"
 		PTR (hasAttachement == false);
 	then
 		insert( Message.warning()
-		               .title("No attachment at all")
-		               .details("Send back?")
+		               .title("Strange...")
+		               .details("No attachment at all")
+		               .addTag("Zero attachment folks"));
+		               
+		insert( Message.info()
+		               .title("PTRs without traces should be sent back")
+		               .details("Click here to send it back to the logger")
 		               .addTag("Zero attachment folks")); 
+ 
 end
